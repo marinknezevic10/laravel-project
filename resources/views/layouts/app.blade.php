@@ -29,7 +29,7 @@
                 <a href="" class="p-3">Prijava</a>
             </li>
             <li>
-                <a href="" class="p-3">Registracija</a>
+                <a href="{{ route('register') }}" class="p-3">Registracija</a>
             </li>
             <li>
                 <a href="" class="p-3">Odjava</a>
