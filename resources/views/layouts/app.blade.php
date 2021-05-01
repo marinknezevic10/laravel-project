@@ -22,18 +22,29 @@
         </ul>
 
         <ul class="flex items-center">
+        <!--@if (auth()->user()) ako je korisnik prijavljen prikazi njegovo ime i prezime -->
+        @auth <!--lakši način -->
             <li>
                 <a href="" class="p-3">Marin Knežević</a>
             </li>
+            <li>
+                <a href="" class="p-3">Odjava</a>
+            </li>
+        @endauth
+
+        <!--@else ako nije prijavljen prikaži priavi i registraciju -->
+        @guest
             <li>
                 <a href="" class="p-3">Prijava</a>
             </li>
             <li>
                 <a href="{{ route('register') }}" class="p-3">Registracija</a>
             </li>
-            <li>
-                <a href="" class="p-3">Odjava</a>
-            </li>
+        @endguest
+       <!-- @endif-->
+            
+            
+            
         </ul>
     </nav>
     @yield('sadrzaj')
