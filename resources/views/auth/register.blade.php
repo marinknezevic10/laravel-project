@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="username" class="sr-only">Korisničko ime</label>
+                    <label for="username" class="sr-only">Korisničko imeee</label>
                     <input type="text" name="username" id="name" placeholder="Korisničko ime"
                     class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('username')
                     border-red-500 @enderror" value="{{ old('username') }}">
