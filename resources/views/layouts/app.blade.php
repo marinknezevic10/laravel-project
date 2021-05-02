@@ -11,10 +11,10 @@
     <nav class="p-6 bg-white flex justify-between mb-6">
         <ul class="flex items-center">
             <li>
-                <a href="" class="p-3">Početna</a>
+                <a href="/" class="p-3">Početna</a>
             </li>
             <li>
-                <a href="" class="p-3">O nama</a>
+                <a href="{{ route('dashboard') }}" class="p-3">O nama</a>
             </li>
             <li>
                 <a href="" class="p-3">Objave</a>
@@ -28,7 +28,10 @@
                 <a href="" class="p-3">Marin Knežević</a>
             </li>
             <li>
-                <a href="" class="p-3">Odjava</a>
+                <form action="{{ route ('logout') }}" method="post" class="inline p-3">
+                @csrf<!-- zato sto idemo metodom post moramo koristi csrf zbog protekcije korisnika-->
+                <button type="submit">Odjava</button>
+                </form>
             </li>
         @endauth
 
