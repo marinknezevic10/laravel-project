@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['guest']);//ako smo vec prijavljeni ne mozemo vidjeti register metodu
+    }
+
     public function index()
     {
         return view('auth.register');

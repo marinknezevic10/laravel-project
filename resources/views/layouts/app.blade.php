@@ -25,7 +25,7 @@
         <!--@if (auth()->user()) ako je korisnik prijavljen prikazi njegovo ime i prezime -->
         @auth <!--lakši način -->
             <li>
-                <a href="" class="p-3">Marin Knežević</a>
+                <a href="" class="p-3">{{ auth()->user()->name }}</a><!--ispisuje ime korisnika koje je unio-->
             </li>
             <li>
                 <form action="{{ route ('logout') }}" method="post" class="inline p-3">
