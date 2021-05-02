@@ -35,7 +35,7 @@
         <!--@else ako nije prijavljen prikaži priavi i registraciju -->
         @guest
             <li>
-                <a href="" class="p-3">Prijava</a>
+                <a href="{{ route('login') }}" class="p-3">Prijava</a>
             </li>
             <li>
                 <a href="{{ route('register') }}" class="p-3">Registracija</a>
