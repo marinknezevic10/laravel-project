@@ -24,7 +24,7 @@ class LoginController extends Controller
             'password'=>'required',
         ]);
 
-       if (!auth()->attempt($request->only('email','password'))){
+       if (!auth()->attempt($request->only('email','password'), $request->remember)){
            return back()->with('status', 'Netočni podaci za prijavu');//return back vraca na prethodnu stranicu, sa porukom u slucaju netocnih podataka
        };
 
