@@ -17,7 +17,7 @@
                 <a href="{{ route('dashboard') }}" class="p-3">O nama</a>
             </li>
             <li>
-                <a href="" class="p-3">Objave</a>
+                <a href="{{ route('posts') }}" class="p-3">Objave</a>
             </li>
         </ul>
 
