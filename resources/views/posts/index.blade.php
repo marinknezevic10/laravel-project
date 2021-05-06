@@ -35,6 +35,7 @@
                 </div>
                 @endforeach
                 
+                {{ $posts->links() }}<!-- pagination-->
             @else
                 <p>Nema nikakvih objava!</p>
             @endif

@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts=Post::get();//vraca sve postove iz baze onako kako su u bazi poredani
+        $posts=Post::paginate(20);//paginate u slucaju velikog broja postova
         return view('posts.index', [
             'posts'=>$posts
         ]);
