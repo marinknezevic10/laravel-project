@@ -35,7 +35,7 @@
             </li>
         @endauth
 
-        <!--@else ako nije prijavljen prikaži priavi i registraciju -->
+        <!--@else ako nije prijavljen prikaži prijavu i registraciju -->
         @guest
             <li>
                 <a href="{{ route('login') }}" class="p-3">Prijava</a>

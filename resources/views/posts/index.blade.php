@@ -27,11 +27,29 @@
             @if($posts->count())
                 @foreach($posts as $post)
                 <div class="mb-4">
-                <a href="" class="font-bold">{{ $post->user->name }}</a><!--$post->user->name
+                    <a href="" class="font-bold">{{ $post->user->name }}</a><!--$post->user->name
                 ispisujem vezu user-post koju sam kreirako u post modelu-->
-                 <span class="text-gray-600text-sm">{{ $post->created_at->diffForHumans() }}</span>
+                    <span class="text-gray-600text-sm">{{ $post->created_at->diffForHumans() }}</span>
 
-                <p class="mb-2">{{ $post->body }}</p>    
+                    <p class="mb-2">{{ $post->body }}</p>    
+                    <div class="flex items-center">
+                    <!--if the user already liked the post-->
+                        @if (!$post->likedBy(auth()->user()))
+                            <form action="{{ route('posts.likes',$post->id) }}" method="post" 
+                            class="mr-1">
+                            @csrf
+                                <button type="submit" class="text-blue-500">Like</button>
+                            </form>
+                        @else
+                            <form action="" method="post" class="mr-1">
+                            @csrf
+                                <button type="submit" class="text-blue-500">Unlike</button>
+                            </form>
+                        @endif
+
+                    <span> {{ $post->likes->count() }} {{ Str::plural('like', 
+                    $post->likes->count()) }}</span><!-- implementing likes onto page-->
+                    </div>
                 </div>
                 @endforeach
                 
