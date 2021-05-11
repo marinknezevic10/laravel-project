@@ -12,7 +12,7 @@ class PostPolicy
 
     public function delete(User $user, Post $post)
     {
-        return $user->id === $post->user_id; //does the user id match the post id, if so delete
+        return $user->id === $post->user_id; //does the user id match the post id, if so delete..
     }
     
 }
