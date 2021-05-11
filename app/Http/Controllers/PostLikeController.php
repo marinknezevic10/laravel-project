@@ -23,4 +23,13 @@ class PostLikeController extends Controller
 
         return back();
     }
+
+    public function destroy(Post $post, Request $request)
+    {
+        //we are going through the user into the likes table and in to the post where we are currently trying to delete like
+        $request->user()->likes()->where('post_id', $post->id)->delete();
+
+        return back();
+
+    }
 }

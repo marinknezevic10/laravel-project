@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+
     public function index()
     {
         $posts=Post::paginate(20);//paginate u slucaju velikog broja postova
@@ -14,6 +16,7 @@ class PostController extends Controller
             'posts'=>$posts
         ]);
     }
+
 
     public function store(Request $request )
     {
