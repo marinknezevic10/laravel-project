@@ -11,7 +11,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts=Post::paginate(20);//paginate u slucaju velikog broja postova
+        $posts=Post::with(['user', 'likes'])->paginate(20);//paginate u slucaju velikog broja postova,with(['user', 'likes']) reducing number of queries, eager loading
         return view('posts.index', [
             'posts'=>$posts
         ]);
