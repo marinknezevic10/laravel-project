@@ -20,7 +20,7 @@
 
                 <div>
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded
-                    font-medium">Objavi</button>
+                    font-medium">Objavi</button> 
                 </div>
             </form>
 
@@ -31,7 +31,16 @@
                 ispisujem vezu user-post koju sam kreirako u post modelu-->
                     <span class="text-gray-600text-sm">{{ $post->created_at->diffForHumans() }}</span>
 
-                    <p class="mb-2">{{ $post->body }}</p>    
+                    <p class="mb-2">{{ $post->body }}</p>
+   
+                    @can('delete', $post)                
+                        <form action="{{ route('posts.destroy', $post) }}" method="post">
+                            @csrf
+                            @method('DELETE')  
+                            <button type="submit" class="text-blue-500">Delete</button>
+                        </form>
+                    @endcan  
+                 
                     <div class="flex items-center">
                         @auth
                         <!--if the user already liked the post-->
@@ -44,11 +53,12 @@
                             @else
                                 <form action="{{ route('posts.likes',$post) }}" method="post" class="mr-1">
                                 @csrf
-                                    @method('DELETE')
+                                @method('DELETE')
                                     <button type="submit" class="text-blue-500">Unlike</button>
                                 </form>
                             @endif
-                            @endauth
+                     
+                        @endauth
 
                     <span> {{ $post->likes->count() }} {{ Str::plural('like', 
                     $post->likes->count()) }}</span><!-- implementing likes onto page-->

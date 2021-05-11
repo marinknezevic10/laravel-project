@@ -11,7 +11,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts=Post::with(['user', 'likes'])->paginate(20);//paginate u slucaju velikog broja postova
+        $posts=Post::latest()->with(['user', 'likes'])->paginate(20);//paginate u slucaju velikog broja postova
         return view('posts.index', [
             'posts'=>$posts
         ]);
@@ -30,5 +30,14 @@ class PostController extends Controller
         return back();
     }
 
+    public function destroy(Post $post)
+    //we need to make sure to be able to delete posts that belong to a user
+    {
+        $this->authorize('delete', $post);
+
+        $post->delete();
+
+        return back();
+    }
 
 }
