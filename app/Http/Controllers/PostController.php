@@ -11,7 +11,9 @@ class PostController extends Controller
 
     public function index()
     {
+
         $posts=Post::latest()->with(['user', 'likes'])->paginate(20);//paginate u slucaju velikog broja postova
+
         return view('posts.index', [
             'posts'=>$posts
         ]);
