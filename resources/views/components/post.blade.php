@@ -36,8 +36,4 @@
                     <span> {{ $post->likes->count() }} {{ Str::plural('like', 
                     $post->likes->count()) }}</span><!-- implementing likes onto page-->
                     </div>
-<<<<<<< HEAD
-                </div>
-=======
-                </div>
->>>>>>> 57fc1a0711b56e5eb49bc269db177343033771bb
+                

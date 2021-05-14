@@ -42,14 +42,4 @@ class PostController extends Controller
         return back();
     }
 
-    public function destroy(Post $post)
-    //we need to make sure to be able to delete posts that belong to a user
-    {
-        $this->authorize('delete', $post);
-
-        $post->delete();
-
-        return back();
-    }
-
 }
