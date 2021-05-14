@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PostLiked;
 
 class PostLikeController extends Controller
 {
@@ -20,6 +22,9 @@ class PostLikeController extends Controller
         $post->likes()->create([
             'user_id'=>$request->user()->id,
         ]);
+
+        //to send an email in laravel, and creating new instance 'PostLiked'
+        Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
 
         return back();
     }
