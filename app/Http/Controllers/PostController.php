@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-
+    public function __construct()
+    {
+        //only allow guest to read the posts, not to post or delete
+        $this->middleware(['auth'])->only(['store', 'destroy']);
+    }
 
     public function index()
     {
