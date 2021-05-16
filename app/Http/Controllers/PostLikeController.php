@@ -17,15 +17,18 @@ class PostLikeController extends Controller
     public function store(Post $post, Request $request)
     {
         //we only want user to be able to give one like per post
-        
+            
 
         $post->likes()->create([
             'user_id'=>$request->user()->id,
         ]);
 
+        //only send an email if it hasnt previously been liked
         //to send an email in laravel, and creating new instance 'PostLiked'
-        Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
-
+        if(!$post->likes()->onlyTrashed()->where('user_id', $request->user()->id)->count()){
+            Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
+        }
+        
         return back();
     }
 
